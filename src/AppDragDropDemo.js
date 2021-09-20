@@ -19,6 +19,7 @@ class AppDragDropDemo extends Component {
     this.state.tasks.forEach((t) =>{
         tasks[t.category].push(
           <div key={t.name}
+               draggable
                className="draggable"
                style={{backgroundColor: t.bgcolor}}
           >
