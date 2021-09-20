@@ -16,11 +16,25 @@ class AppDragDropDemo extends Component {
     ev.dataTransfer.setData("id", id);
   }
 
-
-  
   
   onDragOver = (ev) => {
       ev.preventDefault();
+  }
+
+  onDrop = (ev, cat) => {
+    let id = ev.dataTransfer.getData("id");
+    let tasks = this.state.tasks.filter((task)=> {
+      if(task.name === id){
+          task.category = cat;
+      }
+      return task;
+    });
+
+    this.setState({
+      ...this.state,
+      tasks
+    });
+    
   }
 
 
@@ -53,7 +67,9 @@ class AppDragDropDemo extends Component {
         {tasks.wip}
       </div>
 
-      <div className="droppable" onDragover={(e)=>{this.onDragOver(e)}}>
+      <div className="droppable" 
+           onDragOver={(e)=> {this.onDragOver(e)}}
+           onDrop ={(e) => {this.onDrop(e, "complete")} }>
         <span className="task-header">Complete</span>
         {tasks.complete}
       </div>
