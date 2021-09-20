@@ -1,11 +1,18 @@
-import React, {Component} from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 
+class AppDragDropDemo extends Component {
+	state = {
+		task: [
+			{ name: "Angular", category: "wip", bgcolor: "yellow" },
+			{ name: "React", category: "wip", bgcolor: "pink" },
+			{ name: "Vue", category: "complete", bgcolor: "skyblue" },
+		],
+	};
 
-class AppDragDropDemo extends Component{
-  render(){
-    return(<div className="container-drag">Drag and Drop Demo</div>);
-  }
+	render() {
+		return <div className="container-drag">Drag and Drop Demo</div>;
+	}
 }
 
 export default AppDragDropDemo;
