@@ -10,6 +10,20 @@ class AppDragDropDemo extends Component {
 		],
 	};
 
+  
+  onDragStart = (ev, id) => {
+    console.log('dragstart:' ,id);
+    ev.dataTransfer.setData("id", id);
+  }
+
+
+  
+  
+  onDragOver = (ev) => {
+      ev.preventDefault();
+  }
+
+
 	render() {
     var tasks = {
       wip: [],
@@ -19,6 +33,7 @@ class AppDragDropDemo extends Component {
     this.state.tasks.forEach((t) =>{
         tasks[t.category].push(
           <div key={t.name}
+              onDragStart= {(e)=> this.onDragStart(e, t.name)}
                draggable
                className="draggable"
                style={{backgroundColor: t.bgcolor}}
@@ -38,7 +53,7 @@ class AppDragDropDemo extends Component {
         {tasks.wip}
       </div>
 
-      <div className="droppable">
+      <div className="droppable" onDragover={(e)=>{this.onDragOver(e)}}>
         <span className="task-header">Complete</span>
         {tasks.complete}
       </div>
