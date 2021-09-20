@@ -62,7 +62,10 @@ class AppDragDropDemo extends Component {
     <div className="container-drag">
       <h2 className="header">Drag and Drop Demo</h2>
 
-      <div className="wip">
+      <div className="wip"
+           onDragOver={(e)=> {this.onDragOver(e)}}
+           onDrop ={(e) => {this.onDrop(e, "wip")} }
+      >
         <span className="task-header">WIP</span>
         {tasks.wip}
       </div>
