@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
 
+// Need to refractor code
+// Need to star PDF Viewer using React
+
 class AppDragDropDemo extends Component {
 	state = {
 		tasks: [
